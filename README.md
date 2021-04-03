@@ -31,6 +31,11 @@
 
 `You need to configure environment variable from .env`
 
+### **DOCS**
+
+* Docs can be found [here](https://documenter.getpostman.com/view/10258403/TzCP8nZ8
+)
+
 #### Contributors
 
 * [Abneet Wats](www.linkedin.com/in/abneetwats
