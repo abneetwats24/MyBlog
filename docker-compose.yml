@@ -1,0 +1,56 @@
+version: "3.3"
+services:
+  db:
+    image: mariadb
+    restart: unless-stopped
+    env_file:
+      - .env
+    container_name: blog-db
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DB}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - blog-net
+    healthcheck:
+      test: "exit 0"
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: blog-phpmyadmin
+    links:
+      - db
+    ports:
+      - 8181:80
+    environment:
+      PMA_HOST: db
+      MYSQL_USERNAME: ${MYSQL_USER}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - blog-net
+
+  backend:
+    image: '${DOCKER_IMAGE_BACKEND?Variable not set}:${TAG-latest}'
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    ports:
+      - 8800:8800
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    networks:
+      - blog-net
+
+volumes:
+  db-data:
+
+networks:
+  blog-net:
+    driver: bridge
+
