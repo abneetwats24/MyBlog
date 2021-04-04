@@ -38,7 +38,6 @@
 
 #### Contributors
 
-* [Abneet Wats](www.linkedin.com/in/abneetwats
-)
+* [Abneet Wats](https://www.linkedin.com/in/abneetwats)
 
 * Special Thanks to [Sahil Thakar](https://www.linkedin.com/in/sahil-thakar-b6464b136/)
