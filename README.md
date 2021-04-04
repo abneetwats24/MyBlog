@@ -10,7 +10,7 @@
 
 #### *Start with docker-compose*
 
-    docker-compose up -d
+    docker-compose -f docker-compose-innodb-cluster.yml up -d
 
 * API url will be at [http://localhost:8800/api/--endpoints--](http://localhost:8800/api/)
 

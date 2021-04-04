@@ -1,0 +1,3 @@
+CREATE DATABASE blog;
+CREATE USER 'abneet'@'%' IDENTIFIED BY 'Admin123$';
+GRANT ALL PRIVILEGES ON *.* TO 'abneet'@'%';
